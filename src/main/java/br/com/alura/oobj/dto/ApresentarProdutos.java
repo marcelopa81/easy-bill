@@ -61,7 +61,7 @@ public class ApresentarProdutos {
 
     public static List<ApresentarProdutos> toProdutoLista(List<Produto> lista){
 
-        List<ApresentarProdutos> listaForm = new ArrayList<>();
+        List<ApresentarProdutos> listaFormulario = new ArrayList<>();
         for (Produto produto : lista){
             ApresentarProdutos produtotLista = new ApresentarProdutos();
             produtotLista.setId(produto.getId());
@@ -69,8 +69,8 @@ public class ApresentarProdutos {
             produtotLista.setClasseFiscal(produto.getClasseFiscal());
             produtotLista.setDescricao(produto.getDescricao());
             produtotLista.setPreco(produto.getPrecoFinal());
-            listaForm.add(produtotLista);
+            listaFormulario.add(produtotLista);
         }
-        return listaForm;
+        return listaFormulario;
     }
 }
