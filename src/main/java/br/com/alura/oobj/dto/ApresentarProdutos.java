@@ -35,10 +35,10 @@ public class ApresentarProdutos {
     }
 
     public void setDescricao(String descricao) {
-        if (descricao.length() < 250){
+        if (descricao.length() <= 250){
             this.descricao = descricao;
         }else{
-            this.descricao = descricao.substring(0, 250) + "...";
+            this.descricao = descricao.substring(0, 247) + "...";
         }
 
     }

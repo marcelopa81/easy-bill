@@ -23,7 +23,7 @@ public class ProdutoApiRestController {
 
     @GetMapping("produtos")
     @ResponseBody
-    public List<ApresentarProdutos> retornarLista(){
+    public List<ApresentarProdutos> retornarLista() {
         List<Produto> produtos = produtoRepository.findAll();
         return ApresentarProdutos.toProdutoLista(produtos);
     }

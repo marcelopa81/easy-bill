@@ -20,13 +20,13 @@
                 <div class="col-12 col-sm-8 mb-3">
                     <div class="row">
                         <div class="form-control mb-3">ID: <span th:text="${produtoLista.id}"></span></div>
-                        <div class="form-control mb-3">NOME <span th:text="${produtoLista.nome}"></span></div>
+                        <div class="form-control mb-3">PRODUTO: <span th:text="${produtoLista.nome}"></span></div>
                         <div class="form-control mb-3">PREÇO: <span th:text="${produtoLista.preco}"></span></div>
                         <div class="form-control mb-3">CLASSE FISCAL: <span th:text="${produtoLista.classeFiscal}"></span></div>
                     </div>
-                    <div>DESCRIÃO</div>
+                    <div>DESCRIÇÃO</div>
                     <div>
-                        <text-area class="form-control" th:text="${produtoLista.descricao}">DESCRIÇÃO </text-area>
+                        <textarea class="form-control" th:text="${produtoLista.descricao}">DESCRIÇÃO </textarea>
                     </div>
 
 
