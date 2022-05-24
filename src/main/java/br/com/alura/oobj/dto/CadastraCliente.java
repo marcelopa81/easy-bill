@@ -1,69 +1,58 @@
-package br.com.alura.oobj.model;
+package br.com.alura.oobj.dto;
 
-import javax.persistence.*;
+import br.com.alura.oobj.model.Cliente;
+import br.com.alura.oobj.repository.ClienteRepository;
 
-@Entity
-@Table(name="clientes")
-public class Cliente {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false, length = 50)
+public class CadastraCliente {
+    @NotBlank
     private String nome;
 
-    @Column(nullable = false, length = 11)
+    @NotBlank
+    @Size(min = 11, max = 11)
     private String cpf;
 
-    @Column(nullable = false, length = 11)
+    @NotBlank
+    @Size(min = 11, max = 11)
     private String telefone;
 
-    @Column(nullable = false, length = 50)
+    @NotBlank
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @NotBlank
     private String rua;
 
-    @Column(nullable = false, length = 10)
+    @NotBlank
     private String numero;
 
-    @Column(length = 20)
+    @NotBlank
     private String complemento;
 
-    @Column(nullable = false, length = 20)
+    @NotBlank
     private String bairro;
 
-    @Column(nullable = false, length = 30)
+    @NotBlank
     private String cidade;
 
-    @Column(nullable = false, length = 30)
+    @NotBlank
     private String estado;
 
-    public Cliente() {
+    public CadastraCliente() {
     }
 
-    public Cliente(String nome, String cpf, String telefone, String email, String rua,
-                   String numero, String complemento, String bairro, String cidade, String estado) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.email = email;
-        this.rua = rua;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public CadastraCliente(Cliente cliente) {
+        this.nome = cliente.getNome();
+        this.cpf = cliente.getCpf();
+        this.telefone = cliente.getTelefone();
+        this.email = cliente.getEmail();
+        this.rua = cliente.getRua();
+        this.numero = cliente.getNumero();
+        this.complemento = cliente.getComplemento();
+        this.bairro = cliente.getBairro();
+        this.cidade = cliente.getCidade();
+        this.estado = cliente.getEstado();
     }
 
     public String getNome() {
@@ -145,5 +134,10 @@ public class Cliente {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-}
 
+
+    public Cliente converter() {
+        return new Cliente(nome, cpf, telefone, email, rua, numero, complemento, bairro,
+                cidade, estado);
+    }
+}

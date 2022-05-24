@@ -1,6 +1,6 @@
 package br.com.alura.oobj.controller;
 
-import br.com.alura.oobj.dto.ApresentarProdutos;
+import br.com.alura.oobj.dto.RetornaProdutos;
 import br.com.alura.oobj.model.Produto;
 import br.com.alura.oobj.dto.RequisicaoNovoProduto;
 import br.com.alura.oobj.repository.ProdutoRepository;
@@ -33,7 +33,7 @@ public class ProdutoController {
     @GetMapping("produto")
     public String produtos(Model model){
         List<Produto> lista = produtoRepository.findAll();
-        model.addAttribute("produtos", ApresentarProdutos.toProdutoLista(lista));
+        model.addAttribute("produtos", RetornaProdutos.toProdutoLista(lista));
         return "admin/produtos/produto";
     }
 

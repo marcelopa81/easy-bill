@@ -1,71 +1,39 @@
-package br.com.alura.oobj.model;
+package br.com.alura.oobj.dto;
 
-import javax.persistence.*;
+import br.com.alura.oobj.model.Cliente;
 
-@Entity
-@Table(name="clientes")
-public class Cliente {
+import java.util.List;
+import java.util.stream.Collectors;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class RetornoClienteId {
 
-    @Column(nullable = false, length = 50)
     private String nome;
-
-    @Column(nullable = false, length = 11)
     private String cpf;
-
-    @Column(nullable = false, length = 11)
     private String telefone;
-
-    @Column(nullable = false, length = 50)
     private String email;
-
-    @Column(nullable = false, length = 50)
     private String rua;
-
-    @Column(nullable = false, length = 10)
     private String numero;
-
-    @Column(length = 20)
     private String complemento;
-
-    @Column(nullable = false, length = 20)
     private String bairro;
-
-    @Column(nullable = false, length = 30)
     private String cidade;
-
-    @Column(nullable = false, length = 30)
     private String estado;
 
-    public Cliente() {
+    public RetornoClienteId(Cliente cliente){
+        this.nome = cliente.getNome();
+        this.cpf = cliente.getCpf();
+        this.telefone = cliente.getTelefone();
+        this.email = cliente.getEmail();
+        this.rua = cliente.getRua();
+        this.numero = cliente.getNumero();
+        this.complemento = cliente.getComplemento();
+        this.bairro = cliente.getBairro();
+        this.cidade = cliente.getCidade();
+        this.estado = cliente.getEstado();
     }
 
-    public Cliente(String nome, String cpf, String telefone, String email, String rua,
-                   String numero, String complemento, String bairro, String cidade, String estado) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.email = email;
-        this.rua = rua;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
+    public static List<RetornoClienteId>converter(List<Cliente> clientes){
+        return clientes.stream().map(RetornoClienteId::new).collect(Collectors.toList());
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -146,4 +114,3 @@ public class Cliente {
         this.estado = estado;
     }
 }
-

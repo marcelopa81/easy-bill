@@ -1,6 +1,6 @@
 package br.com.alura.oobj.controller;
 
-import br.com.alura.oobj.dto.ApresentarProdutos;
+import br.com.alura.oobj.dto.RetornaProdutos;
 import br.com.alura.oobj.model.Produto;
 import br.com.alura.oobj.repository.ProdutoRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +23,9 @@ public class ProdutoApiRestController {
 
     @GetMapping("produtos")
     @ResponseBody
-    public List<ApresentarProdutos> retornarLista() {
+    public List<RetornaProdutos> retornarLista() {
         List<Produto> produtos = produtoRepository.findAll();
-        return ApresentarProdutos.toProdutoLista(produtos);
+        return RetornaProdutos.toProdutoLista(produtos);
     }
 
 }
