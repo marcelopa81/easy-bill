@@ -5,7 +5,7 @@ import br.com.alura.oobj.model.Cliente;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RetornoClienteId {
+public class RetornaCliente {
 
     private String nome;
     private String cpf;
@@ -18,7 +18,7 @@ public class RetornoClienteId {
     private String cidade;
     private String estado;
 
-    public RetornoClienteId(Cliente cliente){
+    public RetornaCliente(Cliente cliente){
         this.nome = cliente.getNome();
         this.cpf = cliente.getCpf();
         this.telefone = cliente.getTelefone();
@@ -31,8 +31,8 @@ public class RetornoClienteId {
         this.estado = cliente.getEstado();
     }
 
-    public static List<RetornoClienteId>converter(List<Cliente> clientes){
-        return clientes.stream().map(RetornoClienteId::new).collect(Collectors.toList());
+    public static List<RetornaCliente>converter(List<Cliente> clientes){
+        return clientes.stream().map(RetornaCliente::new).collect(Collectors.toList());
     }
     public String getNome() {
         return nome;

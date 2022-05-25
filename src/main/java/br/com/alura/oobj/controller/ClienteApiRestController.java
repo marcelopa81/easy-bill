@@ -1,6 +1,6 @@
 package br.com.alura.oobj.controller;
 
-import br.com.alura.oobj.dto.RetornoClienteId;
+import br.com.alura.oobj.dto.RetornaCliente;
 import br.com.alura.oobj.model.Cliente;
 import br.com.alura.oobj.repository.ClienteRepository;
 import br.com.alura.oobj.dto.CadastraCliente;
@@ -12,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -39,13 +40,22 @@ public class ClienteApiRestController {
     }
 
     @GetMapping("/clientes/{id}")
-    public ResponseEntity<RetornoClienteId> retornaClientePorId(@PathVariable Long id){
+    public ResponseEntity<RetornaCliente> retornaClientePorId(@PathVariable Long id){
         Optional<Cliente> cliente = clienteRepository.findById(id);
         if(cliente.isPresent()) {
-            return ResponseEntity.ok(new RetornoClienteId(cliente.get()));
+            return ResponseEntity.ok(new RetornaCliente(cliente.get()));
         }
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/admin/clientes")
+    public List<RetornaCliente> clientePorEstado(@RequestParam(required = false) String estado){
+        if(estado==null){
+            List<Cliente> cliente = clienteRepository.findAll();
+            return RetornaCliente.converter(cliente);
+        }
+        List<Cliente> clientePorEstado = clienteRepository.findByEstado(estado);
+        return RetornaCliente.converter(clientePorEstado);
+    }
 
 }
