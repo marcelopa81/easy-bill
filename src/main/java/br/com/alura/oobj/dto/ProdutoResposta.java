@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RetornaProdutos {
+public class ProdutoResposta {
 
         private Long id;
         private String nome;
@@ -59,11 +59,11 @@ public class RetornaProdutos {
         this.classeFiscal = classeFiscal;
     }
 
-    public static List<RetornaProdutos> toProdutoLista(List<Produto> lista){
+    public static List<ProdutoResposta> toProdutoLista(List<Produto> lista){
 
-        List<RetornaProdutos> listaFormulario = new ArrayList<>();
+        List<ProdutoResposta> listaFormulario = new ArrayList<>();
         for (Produto produto : lista){
-            RetornaProdutos produtotLista = new RetornaProdutos();
+            ProdutoResposta produtotLista = new ProdutoResposta();
             produtotLista.setId(produto.getId());
             produtotLista.setNome(produto.getNome());
             produtotLista.setClasseFiscal(produto.getClasseFiscal());

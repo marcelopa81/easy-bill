@@ -2,23 +2,46 @@ package br.com.alura.oobj.dto;
 
 import br.com.alura.oobj.model.Cliente;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-public class RetornaCliente {
-
+public class ClienteForm {
+    @NotBlank
     private String nome;
+
+    @NotBlank
+    @Size(min = 11, max = 11)
     private String cpf;
+
+    @NotBlank
+    @Size(min = 11, max = 11)
     private String telefone;
+
+    @NotBlank
     private String email;
+
+    @NotBlank
     private String rua;
+
+    @NotBlank
     private String numero;
+
+    @NotBlank
     private String complemento;
+
+    @NotBlank
     private String bairro;
+
+    @NotBlank
     private String cidade;
+
+    @NotBlank
     private String estado;
 
-    public RetornaCliente(Cliente cliente){
+    public ClienteForm() {
+    }
+
+    public ClienteForm(Cliente cliente) {
         this.nome = cliente.getNome();
         this.cpf = cliente.getCpf();
         this.telefone = cliente.getTelefone();
@@ -31,9 +54,6 @@ public class RetornaCliente {
         this.estado = cliente.getEstado();
     }
 
-    public static List<RetornaCliente>converter(List<Cliente> clientes){
-        return clientes.stream().map(RetornaCliente::new).collect(Collectors.toList());
-    }
     public String getNome() {
         return nome;
     }
@@ -112,5 +132,11 @@ public class RetornaCliente {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+
+    public Cliente converter() {
+        return new Cliente(nome, cpf, telefone, email, rua, numero, complemento, bairro,
+                cidade, estado);
     }
 }

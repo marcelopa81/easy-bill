@@ -1,48 +1,24 @@
 package br.com.alura.oobj.dto;
 
 import br.com.alura.oobj.model.Cliente;
-import br.com.alura.oobj.repository.ClienteRepository;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class CadastraCliente {
-    @NotBlank
+public class ClienteResposta {
+
     private String nome;
-
-    @NotBlank
-    @Size(min = 11, max = 11)
     private String cpf;
-
-    @NotBlank
-    @Size(min = 11, max = 11)
     private String telefone;
-
-    @NotBlank
     private String email;
-
-    @NotBlank
     private String rua;
-
-    @NotBlank
     private String numero;
-
-    @NotBlank
     private String complemento;
-
-    @NotBlank
     private String bairro;
-
-    @NotBlank
     private String cidade;
-
-    @NotBlank
     private String estado;
 
-    public CadastraCliente() {
-    }
-
-    public CadastraCliente(Cliente cliente) {
+    public ClienteResposta(Cliente cliente){
         this.nome = cliente.getNome();
         this.cpf = cliente.getCpf();
         this.telefone = cliente.getTelefone();
@@ -55,6 +31,9 @@ public class CadastraCliente {
         this.estado = cliente.getEstado();
     }
 
+    public static List<ClienteResposta>converter(List<Cliente> clientes){
+        return clientes.stream().map(ClienteResposta::new).collect(Collectors.toList());
+    }
     public String getNome() {
         return nome;
     }
@@ -133,11 +112,5 @@ public class CadastraCliente {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-
-    public Cliente converter() {
-        return new Cliente(nome, cpf, telefone, email, rua, numero, complemento, bairro,
-                cidade, estado);
     }
 }

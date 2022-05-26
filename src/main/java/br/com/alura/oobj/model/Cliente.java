@@ -10,34 +10,34 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, name = "nome")
     private String nome;
 
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, length = 11, name = "cpf")
     private String cpf;
 
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, length = 11, name = "telefone")
     private String telefone;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50 , name = "email")
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, name = "rua")
     private String rua;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 10, name = "numero")
     private String numero;
 
-    @Column(length = 20)
+    @Column(length = 20, name = "complemento")
     private String complemento;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 20, name="bairro")
     private String bairro;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 30, name = "cidade")
     private String cidade;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 30, name="estado")
     private String estado;
 
     public Cliente() {
