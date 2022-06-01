@@ -9,7 +9,7 @@ public class RequisicaoNovoProduto {
 
     @NotBlank
     @Size(max = 150)
-    private String nomeProduto;
+    private String nome;
 
     @NotBlank
     @Size(max = 500)
@@ -28,12 +28,23 @@ public class RequisicaoNovoProduto {
     @Pattern(regexp= "[\\d]{4}[\\.][\\d]{2}[\\.][\\d]{2}")
     private String classeFiscal;
 
-    public String getNomeProduto() {
-        return nomeProduto;
+    public RequisicaoNovoProduto() {}
+
+    public RequisicaoNovoProduto(Produto produto) {
+        this.nome = produto.getNome();
+        this.descricao = produto.getDescricao();
+        this.preco = produto.getPreco();
+        this.precoPromocional = produto.getPrecoPromocional();
+        this.classeFiscal = produto.getClasseFiscal();
+        this.urlImagem = produto.getUrlImagem();
     }
 
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getUrlImagem() {
@@ -78,7 +89,7 @@ public class RequisicaoNovoProduto {
 
     public Produto toProduto() {
         Produto produto = new Produto();
-        produto.setNome(nomeProduto);
+        produto.setNome(nome);
         produto.setUrlImagem(urlImagem);
         produto.setDescricao(descricao);
         produto.setPreco(preco);

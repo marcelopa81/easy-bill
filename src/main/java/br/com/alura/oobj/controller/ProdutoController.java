@@ -21,9 +21,14 @@ import java.util.List;
 public class ProdutoController {
 
     private ProdutoRepository produtoRepository;
+    private PrecoPromocionalValidador precoPromocionalValidador;
+    private ProdutoApiRestController produtoApiRestController;
 
-    public ProdutoController(ProdutoRepository produtoRepository) {
+    public ProdutoController(ProdutoRepository produtoRepository, PrecoPromocionalValidador precoPromocionalValidador,
+    ProdutoApiRestController produtoApiRestController) {
         this.produtoRepository = produtoRepository;
+        this.precoPromocionalValidador = precoPromocionalValidador;
+        this.produtoApiRestController = produtoApiRestController;
     }
 
     @GetMapping("/formulario")
@@ -33,7 +38,7 @@ public class ProdutoController {
     @GetMapping("produto")
     public String produtos(Model model){
         List<Produto> lista = produtoRepository.findAll();
-        model.addAttribute("produtos", ProdutoResposta.toProdutoLista(lista));
+        model.addAttribute("produtos", produtoApiRestController.retornarLista());
         return "admin/produtos/produto";
     }
 

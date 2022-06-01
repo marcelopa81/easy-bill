@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "itens_venda")
-public class ItenVenda {
+public class ItemVenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class ItenVenda {
     @Column(nullable = false)
     private int quantidade;
 
-    @Column(nullable = false, length = 500)
+    @Column(length = 500)
     private String observacao;
 
     @Column(nullable = false, name = "preco_unitario")

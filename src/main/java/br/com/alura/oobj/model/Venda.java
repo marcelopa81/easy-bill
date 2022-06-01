@@ -14,17 +14,25 @@ public class Venda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+
     @Column(name ="data_hora_venda")
     private LocalDateTime dataHoraVenda = LocalDateTime.now();
 
-    @NotBlank
+
     @Enumerated(value = EnumType.STRING)
     @Column(nullable = false, name ="status")
     private Status status;
 
     @ManyToOne
     private Cliente cliente;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public LocalDateTime getDataHoraVenda() {
         return dataHoraVenda;

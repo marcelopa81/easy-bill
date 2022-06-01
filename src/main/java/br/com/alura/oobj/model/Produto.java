@@ -44,7 +44,7 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getUrl() {
+    public String getUrlImagem() {
         return urlImagem;
     }
 
