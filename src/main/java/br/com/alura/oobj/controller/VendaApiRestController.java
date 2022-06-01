@@ -6,6 +6,7 @@ import br.com.alura.oobj.dto.RequisicaoVenda;
 import br.com.alura.oobj.dto.VendaResposta;
 import br.com.alura.oobj.model.ItemVenda;
 import br.com.alura.oobj.model.Venda;
+import br.com.alura.oobj.projection.VendasPorProdutoProjection;
 import br.com.alura.oobj.repository.ItemVendaRepository;
 import br.com.alura.oobj.repository.VendaRepository;
 import br.com.alura.oobj.service.ServiceVenda;
@@ -61,5 +62,10 @@ public class VendaApiRestController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/admin/relatorios/vendas-por-produto")
+    public ResponseEntity<List<VendasPorProdutoProjection>> retornaRelatorio(){
+        return ResponseEntity.ok(itemVendaRepository.relatorioVendaPorProduto());
     }
 }
