@@ -4,19 +4,20 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name="produtos")
 public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false, length = 150, name = "nome")
     private String nome;
 
-    @Column(nullable = false, length = 500)
-    private String url;
+    @Column(nullable = false, length = 500, name = "url_imagem")
+    private String urlImagem;
 
-    @Column(length = 1000)
+    @Column(length = 1000, name ="descricao")
     private String descricao;
 
     private BigDecimal preco;
@@ -44,11 +45,11 @@ public class Produto {
     }
 
     public String getUrl() {
-        return url;
+        return urlImagem;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setUrlImagem(String url) {
+        this.urlImagem = url;
     }
 
     public String getDescricao() {

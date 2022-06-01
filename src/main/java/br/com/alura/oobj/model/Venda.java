@@ -19,6 +19,8 @@ public class Venda {
     private LocalDateTime dataHoraVenda = LocalDateTime.now();
 
     @NotBlank
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false, name ="status")
     private Status status;
 
     @ManyToOne

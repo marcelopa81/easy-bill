@@ -79,7 +79,7 @@ public class RequisicaoNovoProduto {
     public Produto toProduto() {
         Produto produto = new Produto();
         produto.setNome(nomeProduto);
-        produto.setUrl(urlImagem);
+        produto.setUrlImagem(urlImagem);
         produto.setDescricao(descricao);
         produto.setPreco(preco);
         produto.setPrecoPromocional(precoPromocional);
