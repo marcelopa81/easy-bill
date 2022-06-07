@@ -5,10 +5,13 @@ import br.com.alura.oobj.dto.RequisicaoNovoProduto;
 import br.com.alura.oobj.model.Produto;
 import br.com.alura.oobj.repository.ProdutoRepository;
 import br.com.alura.oobj.validador.PrecoPromocionalValidador;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -31,6 +34,7 @@ public class ProdutoApiRestController {
 
     @GetMapping("produtos")
     @ResponseBody
+    @Cacheable(value = "listaDeProdutos")
     public List<ProdutoResposta> retornarLista() {
         List<Produto> produtos = produtoRepository.findAll();
         return ProdutoResposta.converter(produtos);
@@ -46,6 +50,7 @@ public class ProdutoApiRestController {
     }
 
     @PostMapping("/admin/produtos")
+    @CacheEvict(value = "listaDeProdutos", allEntries = true)
     public ResponseEntity<RequisicaoNovoProduto> insereNovoProduto(@RequestBody @Valid RequisicaoNovoProduto requisicaoNovoProduto,
                                                                    UriComponentsBuilder uriBuilder, BindingResult result) {
         precoPromocionalValidador.valid(requisicaoNovoProduto, result);
