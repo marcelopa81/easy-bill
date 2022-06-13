@@ -49,6 +49,12 @@ public class ProdutoApiRestController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/aW52YWxpZGEgY2FjaGUgbGlzdGFnZW0gcHJvZHV0b3M")
+    @CacheEvict(value = "listaDeProdutos", allEntries = true)
+    public void limpaCache() {
+
+    }
+
     @PostMapping("/admin/produtos")
     @CacheEvict(value = "listaDeProdutos", allEntries = true)
     public ResponseEntity<RequisicaoNovoProduto> insereNovoProduto(@RequestBody @Valid RequisicaoNovoProduto requisicaoNovoProduto,

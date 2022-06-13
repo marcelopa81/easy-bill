@@ -17,6 +17,5 @@ public class SwaggerConfiguracao {
                 .apis(RequestHandlerSelectors.basePackage("br.com.alura.oobj"))
                 .paths(PathSelectors.ant("/**"))
                 .build();
-
     }
 }

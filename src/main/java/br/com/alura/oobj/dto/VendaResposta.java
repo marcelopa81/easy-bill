@@ -28,7 +28,7 @@ public class VendaResposta {
     public static VendaResposta converter(Optional<Venda> venda, List<ItemVenda> itemVendas){
         return new VendaResposta(venda, itemVendas);
     }
-
+                
     public Long getId() {
         return id;
     }
