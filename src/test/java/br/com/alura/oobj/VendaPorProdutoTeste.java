@@ -32,7 +32,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("teste")
-
 public class VendaPorProdutoTeste {
 
     @Autowired
@@ -68,8 +67,7 @@ public class VendaPorProdutoTeste {
         List<ItemVenda> listaItemVenda = new ArrayList<>();
 
         Venda venda = criaVenda();
-        Produto produto = criaproduto();
-
+        Produto produto = criaProduto();
 
         itemVenda1.setQuantidade(5);
         itemVenda1.setObservacao("Observação produto");
@@ -77,8 +75,7 @@ public class VendaPorProdutoTeste {
         itemVenda1.setPrecoUnitarioPromocional(produto.getPrecoPromocional());
         itemVenda1.setVenda(venda);
         itemVenda1.setProduto(produto);
-
-
+        
         itemVenda2.setQuantidade(2);
         itemVenda2.setObservacao("Observação produto2");
         itemVenda2.setPrecoUnitario(produto.getPreco());
@@ -94,7 +91,7 @@ public class VendaPorProdutoTeste {
     }
 
 
-    public Produto criaproduto(){
+    public Produto criaProduto(){
         Produto produto = new Produto();
         produto.setNome("Smart_TV");
         produto.setUrlImagem("www.amazom.com");
